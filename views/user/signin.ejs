@@ -1,0 +1,26 @@
+<% include ../templates/head.ejs %>
+  <% include ../templates/header.ejs %>
+    <div class="row" style="text-align: center; align-items: center;">
+      <div col-md-4 col-md-offset-4>
+        <h1>Sign in</h1>
+        <% if(hasErrors) { %>
+          <div class="alert alert-danger">
+            <% for(var i = 0; i < messages.length; i++){ %>
+              <p><%= messages[i] %></p>
+              <% } %>
+          </div>
+          <% } %>
+            <form action="/user/signin" method="post">
+              <div class="form-froup">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control" />
+              </div>
+              <div class="form-froup">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" />
+              </div>
+              <input type="hidden" name="_csrf" value=<%= csrfToken %> />
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+      </div>
+    </div>
